@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "upload": "node scripts/upload.js"
+    "upload": "node scripts/upload.js",
+    "updatedb": "node scripts/updatedb.js"
   },
   "keywords": [],
   "author": "",
