@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { initializeApp } = require("firebase/app");
-const { getFirestore, doc, setDoc } = require("firebase/firestore");
+const { getFirestore, doc, setDoc, getDocs, collection, deleteDoc } = require("firebase/firestore");
 const puzzles = require("../data/puzzles.json");
 
 const firebaseConfig = {
@@ -13,6 +13,16 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 async function uploadPuzzles() {
+  console.log("🗑️  Deleting existing puzzles from the database...");
+  const querySnapshot = await getDocs(collection(db, "daily_puzzles"));
+  let deleteCount = 0;
+  for (const docSnapshot of querySnapshot.docs) {
+    await deleteDoc(docSnapshot.ref);
+    deleteCount++;
+  }
+  console.log(`✅ Deleted ${deleteCount} old puzzles.\n`);
+
+  console.log("📤 Uploading new puzzles...");
   let count = 0;
   for (const [date, puzzle] of Object.entries(puzzles)) {
     await setDoc(doc(db, "daily_puzzles", date), puzzle, { merge: true });
