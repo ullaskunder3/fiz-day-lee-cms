@@ -4,6 +4,16 @@ Step-by-step instructions for adding new daily puzzles to the Fiz-Day-Lee CMS.
 
 ---
 
+## 🤖 One-Prompt AI Update (Recommended)
+
+If you are using an AI agent (Antigravity, Cursor, etc.), simply give it this single prompt:
+
+> **"Read AGENTS.md, generate the next month's worth of puzzles, update git and push to Firebase."**
+
+See [AGENTS.md](file:///home/ullaskunder/dev-work/fiz-day-lee-cms/AGENTS.md) for full details on how AI agents process this.
+
+---
+
 ## Prerequisites
 
 - Node.js installed

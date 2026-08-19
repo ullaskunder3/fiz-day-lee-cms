@@ -6,6 +6,14 @@ Uploads daily puzzles from a JSON file to Firebase Firestore.
 > Instead of building a full CMS now, this small app uses a JSON file (`puzzles.json`) that I update and push — which automatically updates the database.  
 > If the project grows and downloads increase, I’ll build a proper CMS later.
 
+## Quick AI One-Prompt Update
+
+If you are using an AI agent (Antigravity, Cursor, etc.), simply send this single prompt:
+
+> **"Read AGENTS.md, generate the next month's worth of puzzles, update git and push to Firebase."**
+
+---
+
 ## Setup
 
 1. Clone the repo
@@ -36,16 +44,11 @@ Uploads daily puzzles from a JSON file to Firebase Firestore.
 ## Usage
 
 ```bash
+# Auto unlock rules, upload data/puzzles.json, and lock rules back down:
+pnpm run updatedb
+
+# Direct upload only:
 pnpm run upload
 ```
 
-Uploads all puzzles in the JSON to the `daily_puzzles` collection.
-
-## TODO / Next Steps
-
-- Add Firestore security rules to allow only authorized edits.
-- Validate puzzle JSON structure before uploading.
-- Add logging of failed uploads with details.
-- Automate upload with GitHub Actions / cron job.
-
-- CMS -> firebase
+For detailed guides, see [UPDATE_GUIDE.md](file:///home/ullaskunder/dev-work/fiz-day-lee-cms/UPDATE_GUIDE.md) and [AGENTS.md](file:///home/ullaskunder/dev-work/fiz-day-lee-cms/AGENTS.md).
